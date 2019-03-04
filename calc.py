@@ -6,9 +6,13 @@ class Calculator ():
         if y is not None:
             result = x + y
             self.all_result_history[str(x) + " + " + str(y) + " = "] = result
+            self.temp_result = result
             return result
         else:
-            return "pass"
+            if self.temp_result != 0:
+                return "pass"
+            else:
+                return "failing"
 
     def sub (self, x, y):
         return x - y
@@ -27,8 +31,3 @@ class Calculator ():
 
     def clear_temp_result(self):
         pass
-
-my_calc = Calculator()
-print(my_calc.add(5,4))
-print(my_calc.add(4,6))
-print (my_calc.all_result_history)
