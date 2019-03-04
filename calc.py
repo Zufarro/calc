@@ -2,15 +2,17 @@ class Calculator ():
     def __init__(self):
         self.all_result_history = {}
         self.temp_result = .0
+
     def add (self, x, y):
         if y is not None:
             result = x + y
             self.all_result_history[str(x) + " + " + str(y) + " = "] = result
             self.temp_result = result
             return result
-        else:
+        elif y is None:
             if self.temp_result != 0:
-                return "pass"
+                result = self.temp_result + x
+                return result
             else:
                 return "failing"
 
