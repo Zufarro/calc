@@ -21,7 +21,7 @@ class Calculator:
     def sub(self, x, y):
         if y is not None:
             result = x - y
-            self.all_result_history[str(x) + " - " - str(y) + " = "] = result
+            self.all_result_history[str(x) + " - " + str(y) + " = "] = result
             self.auto_temp_result = result
             return result
         else:
