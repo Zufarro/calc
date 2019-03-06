@@ -1,72 +1,72 @@
 class Calculator:
     def __init__(self):
-        self.all_result_history = {}
-        self.auto_temp_result = .0
-        self.temp_result = .0
+        self.steps_memory = {}
+        self.auto_memory = .0
+        self.memory = .0
 
     def add(self, x, y):
         if y is not None:
             result = x + y
-            self.all_result_history[str(x) + " + " + str(y) + " = "] = result
-            self.auto_temp_result = result
+            self.steps_memory[str(x) + " + " + str(y) + " = "] = result
+            self.auto_memory = result
             return result
         else:
-            if self.temp_result != 0:
-                result = self.temp_result + x
+            if self.memory != 0:
+                result = self.memory + x
                 return result
-                self.temp_result = .0
+                self.memory = .0
             else:
                 return "failing"
 
     def sub(self, x, y):
         if y is not None:
             result = x - y
-            self.all_result_history[str(x) + " - " + str(y) + " = "] = result
-            self.auto_temp_result = result
+            self.steps_memory[str(x) + " - " + str(y) + " = "] = result
+            self.auto_memory = result
             return result
         else:
-            if self.temp_result != 0:
-                result = self.temp_result - x
+            if self.memory != 0:
+                result = self.memory - x
                 return result
-                self.temp_result = .0
+                self.memory = .0
             else:
                 return "failing"
 
     def mul(self, x, y):
         if y is not None:
             result = x * y
-            self.all_result_history[str(x) + " * " + str(y) + " = "] = result
-            self.auto_temp_result = result
+            self.steps_memory[str(x) + " * " + str(y) + " = "] = result
+            self.auto_memory = result
             return result
         else:
-            if self.temp_result != 0:
-                result = self.temp_result * x
+            if self.memory != 0:
+                result = self.memory * x
                 return result
-                self.temp_result = .0
+                self.memory = .0
             else:
                 return "failing"
 
     def div(self, x, y):
         if y is not None and y != 0:
             result = x / y
-            self.all_result_history[str(x) + " / " + str(y) + " = "] = result
-            self.auto_temp_result = result
+            self.steps_memory[str(x) + " / " + str(y) + " = "] = result
+            self.auto_memory = result
             return result
         elif y is None:
-            if self.temp_result != 0:
-                result = self.temp_result / x
+            if self.memory != 0:
+                result = self.memory / x
                 return result
-                self.temp_result = .0
+                self.memory = .0
             else:
                 return "failing"
         else:
             return "failing"
 
-    def clear_all_result_history(self):
-        self.all_result_history = {}
+    def clear_steps_memory(self):
+        self.steps_memory = {}
 
-    def last_result_in_temp(self):
-        self.temp_result = self.auto_temp_result
+    def memory_save(self):
+        self.memory = self.auto_memory
 
-    def clear_temp_result(self):
-        self.temp_result = .0
+    def clear_memory(self):
+        self.memory = .0
