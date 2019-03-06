@@ -70,3 +70,14 @@ class Calculator:
 
     def clear_memory(self):
         self.memory = .0
+
+
+from math import sqrt as sq
+
+class Advanced_calculator(Calculator):
+    def sqrt (self, x):
+        return sq(x)
+    def root (self, x, y):
+        return round((x ** (1/y)),3)
+    def pow (self, x, y):
+        return (x ** y)

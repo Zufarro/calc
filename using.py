@@ -1,5 +1,5 @@
 from calc import Calculator
-
+from calc import Advanced_calculator
 
 my_calc = Calculator()
 
@@ -28,3 +28,8 @@ my_calc.clear_memory()
 print (my_calc.memory, " clear")
 
 print(my_calc.sub(10,15))
+
+my_calc2 = Advanced_calculator()
+print(my_calc2.sqrt(100))
+print(my_calc2.root(125,3))
+print(my_calc2.pow(3,2))
