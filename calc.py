@@ -1,66 +1,45 @@
 class Calculator:
     def __init__(self):
         self.history = []
-        self.result = None
+        #self.result = None
         self.memory = None
 
     def save(self,result,x,y,op):
         self.history.append(str(x)+op+str(y)+"="+str(result))
         self.result = result
 
+    def swap_memory(self, y):
+       if y is not None:
+           return y
+       if self.memory is None:
+           raise Exception("memory is empty")
+       y = self.memory
+       self.clear_memory()
+       return y
+
+    def save_result(self, result, x, y, op):
+        self.result = result
+        self.history.append([x, y, op, result])
+        return result
+
     def add(self, x, y):
-        if y is not None:
-            result = x + y
-            self.save(result,x,y,"+")
-            return result
-        else:
-            if self.memory:
-                result = self.memory + x
-                self.memory = None
-                return result
-            else:
-                return "failing"
+        y = self.swap_memory(y)
+        return self.save_result(x + y, x, y, "+")
 
     def sub(self, x, y):
-        if y is not None:
-            result = x - y
-            self.save(result,x,y,"-")
-            return result
-        else:
-            if self.memory:
-                result = self.memory - x
-                self.memory = None
-                return result
-            else:
-                return "failing"
+        y = self.swap_memory(y)
+        return self.save_result(x + y, x, y, "-")
 
     def mul(self, x, y):
-        if y is not None:
-            result = x * y
-            self.save(result,x,y,"*")
-            return result
-        else:
-            if self.memory:
-                result = self.memory * x
-                self.memory = None
-                return result
-            else:
-                return "failing"
+        y = self.swap_memory(y)
+        return self.save_result(x + y, x, y, "*")
 
     def div(self, x, y):
-        if y is not None and y != 0:
-            result = x / y
-            self.save(result,x,y,"/")
-            return result
-        elif y is None:
-            if self.memory:
-                result = self.memory / x
-                self.memory = None
-                return result
-            else:
-                return "failing"
+        if y != 0:
+            y = self.swap_memory(y)
+            return self.save_result(x + y, x, y, "/")
         else:
-            return "failing"
+            return "cannot be divided by zero"
 
     def clear_history(self):
         self.history = []
