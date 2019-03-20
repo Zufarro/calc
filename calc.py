@@ -28,16 +28,16 @@ class Calculator:
 
     def sub(self, x, y):
         y = self.swap_memory(y)
-        return self.save_result(x + y, x, y, "-")
+        return self.save_result(x - y, x, y, "-")
 
     def mul(self, x, y):
         y = self.swap_memory(y)
-        return self.save_result(x + y, x, y, "*")
+        return self.save_result(x * y, x, y, "*")
 
     def div(self, x, y):
         if y != 0:
             y = self.swap_memory(y)
-            return self.save_result(x + y, x, y, "/")
+            return self.save_result(x / y, x, y, "/")
         else:
             return "cannot be divided by zero"
 
